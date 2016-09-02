@@ -8,7 +8,18 @@ platform:
 install:
   - ps: Install-Product node $env:nodejs_version
   - npm install
+
+build_script:
   - cmd: node build.js
+
+test_script:
+  - node --version
+  - npm --version
+  - cmd: npm test
+
+artifacts:
+  - path: build
+    name: build
 
 deploy:
   provider: S3
@@ -18,20 +29,8 @@ deploy:
     secure: 8hFJeMNTHobCOn8OkZirlb3iCEGjUHtxsWSFv3Jo79nklT34asKfOVcFzf3WJ1/B
   bucket: quirkbot-downloads-stage
   region: us-east-1
+  set_public: true
   folder: quirkbot-lite-builds
   artifact: build
 
-artifacts:
-  - path: build\*
-    name: build
-
-test_script:
-  - node --version
-  - npm --version
-  - cmd: npm test
-
-# Don't actually build.
-build: off
-
-# Set build version format here instead of in the admin panel.
 version: "{build}"
