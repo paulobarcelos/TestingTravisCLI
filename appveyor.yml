@@ -19,7 +19,9 @@ deploy:
   bucket: quirkbot-downloads-stage
   region: us-east-1
   folder: quirkbot-lite-builds
-  artifact: build
+
+artifacts:
+  - path: build\*
 
 test_script:
   - node --version
