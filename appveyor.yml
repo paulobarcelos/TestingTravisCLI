@@ -11,8 +11,19 @@ install:
   - npm install
   - cmd: node build.js
 
+
+deploy:
+  provider: S3
+  access_key_id:
+    secure: AkqgS6TgE6nC0WUZ3nNtqoH1LkPOYhol/bSlMRleKcg=
+  secret_access_key:
+    secure: 8hFJeMNTHobCOn8OkZirlb3iCEGjUHtxsWSFv3Jo79nklT34asKfOVcFzf3WJ1/B
+  bucket: quirkbot-downloads-stage
+  region: us-east-1
+  folder: quirkbot-lite-builds
+  artifact: build
+
 test_script:
-  # Output useful info for debugging.
   - node --version
   - npm --version
   - cmd: npm test
