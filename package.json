@@ -1,0 +1,9 @@
+{
+  "name": "testing-travis-cli",
+  "dependencies": {
+    "nwjs-builder": "^1.13.1"
+  },
+  "scripts": {
+    "test": "exit 0"
+  }
+}
